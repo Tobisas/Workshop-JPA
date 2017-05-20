@@ -51,4 +51,20 @@ public class RegistrationRepository {
         return entityManager.createQuery("SELECT a FROM Account a", Account.class).getResultList();
     }
 
+    /**
+     * Updates the account with the <code>id</code> that matches the
+     * <code>id</code> of the given <code>account</code>
+     *
+     * @param account the updates field(s) of the account
+     * @return a <i>new</i> Account instances, containing the latest view of
+     * this Account entity.
+     *
+     * @throws IllegalArgumentException if the given <code>account</code> is not
+     * already an attached entity
+     */
+    Account update(Account account) {
+        //    throw new UnsupportedOperationException("Not supported yet.");
+        return entityManager.merge(account);
+    }
+
 }
