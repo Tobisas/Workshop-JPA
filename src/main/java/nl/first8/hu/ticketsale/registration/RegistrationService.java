@@ -22,7 +22,7 @@ public class RegistrationService {
         repository.insert(account);
     }
 
-    public Optional<Account> getById(@NonNull final Object id) { //TODO: fix argument by setting the proper data type!
+    public Optional<Account> getById(@NonNull final String id) {
         return repository.findById(id);
     }
 

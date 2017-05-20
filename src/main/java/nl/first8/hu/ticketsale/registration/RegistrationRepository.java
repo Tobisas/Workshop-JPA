@@ -26,7 +26,7 @@ public class RegistrationRepository {
      * @throws EntityExistsException if the entity already exists
      */
     public void insert(final Account account) {
-        throw new UnsupportedOperationException("Not supported yet!");
+        entityManager.persist(account);
     }
 
     /**
@@ -37,8 +37,8 @@ public class RegistrationRepository {
      * {@link Optional#empty() empty} Optional if no Account could be identified
      * with the given <code>id</code>.
      */
-    public Optional<Account> findById(final Object id) {
-        throw new UnsupportedOperationException("Not supported yet!");
+    public Optional<Account> findById(final String id) {
+        return Optional.ofNullable(entityManager.find(Account.class, id));
     }
 
     /**
@@ -48,7 +48,7 @@ public class RegistrationRepository {
      * {@link Account}s exist in the underlying data source
      */
     public List<Account> findAll() {
-        throw new UnsupportedOperationException("Not supported yet!");
+        return entityManager.createQuery("SELECT a FROM Account a", Account.class).getResultList();
     }
 
 }
